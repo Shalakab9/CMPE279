@@ -80,7 +80,7 @@ int main(int argc, char const *argv[])
         exit(EXIT_FAILURE); 
     }
 
-    child_pid = fork();
+    int pid = fork();
     if(pid==-1){
         perror("Error in creating child process");
         exit(EXIT_FAILURE);
@@ -102,7 +102,7 @@ int main(int argc, char const *argv[])
         else{
             
             char pass_socket[10];
-            sprintf(pass_socket, "%d", duplicate_socket);
+            sprintf(pass_socket, "%d", socket_dupl);
             char *args[] = {pass_socket,"Y", NULL};
             execv(argv[0], args);
         } 
